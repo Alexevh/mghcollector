@@ -33,19 +33,15 @@ class Datos {
     private $post = array();
    
 
-    public function insertar_comentario() {
+    public function insertar_registro($fec, $pag, $tiemp) {
 
-        $nombre = $_POST["nom"];
-        $correo = $_POST["correo"];
-        $mensaje = $_POST["mensaje"];
-        $noticia = $_POST["id_noticia"];
-        //Limpio de basura los inpts vs ataques
-        $nombre = stripslashes($nombre);
-        $correo = stripslashes($correo);
-        $mensaje = stripslashes($mensaje);
+        //Sacamos la basura
+        $fecha = stripslashes($fec);
+        $pagina = stripslashes($pag);
+        $tiempo = stripslashes($tiemp);
 
 
-        $sql = "insert into comentarios values (null,'$nombre','$correo','null','$mensaje',now(),$noticia);";    
+        $sql = "insert into registro values (null,'$fecha','$pagina','$tiempo');";    
         //Creo un objeto de la clase conexion
         $con = new Conexion();
         //Obtengo una conexion mediante el metodo conectar del objeto
@@ -56,7 +52,29 @@ class Datos {
     }
 
   
-
+public function login($n,  $p)
+{
+   
+    //Armamos la query
+    $query = "SELECT * FROM usuarios where usuario='$n' and password='$p'";
+    
+    //Obtejo de conexion
+    $con = new Conexion();
+    //Me conecto
+    $mysqli = $con->conectar();
+    
+    //Resultado
+    $res = $mysqli->query($query);
+    
+    //Valoro el resultado
+    if ($res->num_rows <=0)
+    {
+        return FALSE;
+    } else 
+    {
+        return TRUE;
+    }
+}
   
 
 

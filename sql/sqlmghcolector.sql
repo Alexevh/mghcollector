@@ -1,0 +1,1 @@
+CREATE TABLE `mghdata`.`registro` ( `id` INT NOT NULL AUTO_INCREMENT, `fecha` DATE NULL DEFAULT NULL , `nombre_pagina` VARCHAR(100) NULL DEFAULT NULL , `tiempo_segundos` INT NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
