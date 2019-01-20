@@ -21,7 +21,7 @@ $datos = new Datos();
 
 if ($datos->login($nombre, $pass)) {
     try {
-        $datos->insertar_registro($fecha, $nombre, $tiempo);
+        $datos->insertar_registro($fecha, $pagina, $tiempo);
         echo 'no dio error';
         return TRUE;
     } catch (Exception $ex) {
